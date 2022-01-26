@@ -7,7 +7,9 @@ const main = async () => {
   console.log("Contract deployed to:", nftContract.address);
 
   //Call mint function from contract
-  let txn = await nftContract.birthPony();
+  let txn = await nftContract.birthPony(2, {
+    value: ethers.utils.parseEther("0.02"),
+  });
   //Wait for mint
   await txn.wait();
   console.log("Nft minted!!");

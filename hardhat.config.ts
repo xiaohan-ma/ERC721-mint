@@ -13,7 +13,8 @@ const INFURA_API_KEY = process.env.INFURA_API_KEY || "";
 const RINKEBY_PRIVATE_KEY =
   process.env.RINKEBY_PRIVATE_KEY! ||
   "0xc87509a1c067bbde78beb793e6fa76530b6382a4c0241e5e4a9ec0a0f44dc0d3"; // well known private key
-const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY;
+const ETHERSCAN_API_KEY =
+  process.env.ETHERSCAN_API_KEY! || "CS259TER7IT4778M8PF5681T9KNUH1QYNU";
 
 const config: HardhatUserConfig = {
   defaultNetwork: "hardhat",
@@ -24,8 +25,10 @@ const config: HardhatUserConfig = {
     hardhat: {},
     localhost: {},
     rinkeby: {
-      url: `https://rinkeby.infura.io/v3/${INFURA_API_KEY}`,
+      url: `https://rinkeby.infura.io/v3/`,
       accounts: [RINKEBY_PRIVATE_KEY],
+      gas: 2100000,
+      gasPrice: 8000000000,
     },
     coverage: {
       url: "http://127.0.0.1:8555", // Coverage launches its own ganache-cli client
